@@ -1,11 +1,296 @@
-<!-- hello world html -->
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>hello world</title>
+    <title>Léon Muller</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/me.png" />
   </head>
+
   <body>
-    <h1>hello world</h1>
+    <!-- Navigation -->
+    <div class="navigation flex-row">
+      <a class="logo" href="#hero-header">@Reeezer/</a>
+
+      <div class="menu flex-row">
+        <a class="nav-button" href="#about">About</a>
+        <a class="nav-button" href="#education">Education</a>
+        <a class="nav-button" href="#projects">Projects</a>
+        <a class="nav-button" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <div id="hero-header" class="full-section">
+    <div class="blurry-circle circle1"></div>
+    <div class="blurry-circle circle2"></div>
+    <div class="blurry-circle circle3"></div>
+    <div class="blurry-circle circle4"></div>
+
+      <div class="banner">
+        <h1>
+          I am <span class="blue">Léon Muller</span>,<br />
+          Master Student in Data Science at EPFL, passionate about AI and technology.
+        </h1>
+        <a href="#about"><img class="down-button" src="images/down-button.png" alt="Down button" /></a>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div id="about" class="section nav-section">
+      <div class="section-title flex-row">
+        <img class="icon" src="images/me.png" alt="About me" />
+        <h2>About me</h2>
+      </div>
+
+      <hr />
+
+      <div class="section-container">
+        <a href="https://www.linkedin.com/in/muller-leon/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>23-Year-Old Computer Science Passionate</h3>
+                </div>
+                <p>I am a Data Science Master's student specializing in AI solutions for complex problems. I get excited on opportunities where I can contribute to cutting-edge AI, machine learning, and data science projects that push technological boundaries.</p>
+                <p class="white">See my LinkedIn profile</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div id="education" class="section nav-section">
+      <div class="section-title flex-row">
+        <img class="icon" src="images/education.png" alt="Education" />
+        <h2>Education</h2>
+      </div>
+
+      <hr />
+
+      <div class="section-container">
+        <a href="https://www.epfl.ch/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Master of Science, Data Science @ <span class="blue">EPFL</span></h3>
+                  <p>2022 - 2025</p>
+                </div>
+                <p>Currently pursuing a Master's degree in Computer Science with a specialization in Data Science at EPFL, enhancing my understanding of research and scientific fundamentals.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Data Analysis</span>
+                  <span>Computer Vision</span>
+                  <span>Natural Language Processing</span>
+                  <span>Algorithms</span>
+                </div>
+                <p class="white">Award - Hopefully one 🤞</p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.he-arc.ch/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Bachelor of Engineering, Software Development & Imaging @ <span class="blue">HES-SO Arc Ingéniérie</span></h3>
+                  <p>2020 - 2022</p>
+                </div>
+                <p>Completed a Bachelor's degree in Computer Science with a specialization in Software Development and Imaging at HES-SO Arc Ingéniérie, which gave me a deep understanding of video games, applications, and websites in general.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Databases</span>
+                  <span>Computer Vision</span>
+                  <span>Sofware Development</span>
+                  <span>Mobile Applications</span>
+                </div>
+                <p class="white">Award - Top Student of the Engineering Field</p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.utbm.fr/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Bachelor of Engineering, Computer Science & Engineering @ <span class="blue">UTBM</span></h3>
+                  <p>2019 - 2022</p>
+                </div>
+                <p>Completed a Bachelor's degree in Engineering at UTBM. This program equipped me with foundational skills in Engineering and Computer Science, preparing me for advanced studies and professional challenges in these fields.</p>
+                <div class="tags flex-row">
+                  <span>Computer Science</span>
+                  <span>Engineering</span>
+                  <span>Mathematics</span>
+                </div>
+                <p class="white">Award - DEUTEC Prize for the Best Students</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div id="projects" class="section nav-section">
+      <div class="section-title flex-row">
+        <img class="icon" src="images/projects.png" alt="Projects" />
+        <h2>Projects</h2>
+      </div>
+
+      <hr />
+
+      <div class="section-container">
+        <a href="https://www.neurorestore.swiss/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Learning the Natural Language of the Spinal Cord @ <span class="blue">.NeuroRestore</span></h3>
+                  <p>Spring - Autumn 2024</p>
+                </div>
+                <p>Enhanced MRI image accuracy using advanced deep learning techniques, by eliminating artifacts and improved spinal cord segmentation to improve diagnostic precision.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Neuroimaging</span>
+                  <span>Data Analysis</span>
+                  <span>Research</span>
+                </div>
+                <p class="white">Based on META Masked Autoencoders</p>
+              </div>
+              <img class="section-image" src="images/project-spine.png" alt="Spinal Cord" />
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.epfl.ch/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>AI Tutor for Scientific Courses @ <span class="blue">EPFL</span></h3>
+                  <p>Spring 2024</p>
+                </div>
+                <p>Created an interactive and intelligent tutor that provides explanations, answers questions, and offers personalized support to enhance learning in scientific subjects.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Natural Language Processing</span>
+                  <span>Data Analysis</span>
+                </div>
+                <p class="white">Based on OpenAI GPT2</p>
+              </div>
+              <img class="section-image" src="images/project-tutor.png" alt="Library" />
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.neurorestore.swiss/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Decoding Brain Signals for Movement Recovery @ <span class="blue">.NeuroRestore</span></h3>
+                  <p>Autumn 2023</p>
+                </div>
+                <p>Decoding brain signals from ECoG recordings to classify arm movement intentions, aiming to aid in movement recovery from spinal injuries.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Time Series</span>
+                  <span>Data Analysis</span>
+                </div>
+                <p class="white">Based on EEGNet</p>
+              </div>
+              <img class="section-image" src="images/project-brain.png" alt="Brain" />
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.he-arc.ch/" target="_blank">
+          <div class="section-content-wrapper">
+            <div class="section-content flex-row">
+              <div class="content">
+                <div class="subtitle">
+                  <h3>Autonomous Pilot & Target Tracking @ <span class="blue">HES-SO Arc Ingéniérie</span></h3>
+                  <p>Summer 2022</p>
+                </div>
+                <p>Developed an advanced autopilot and target tracking system for JetRacer cars, using cutting-edge object detection and computer vision techniques to enhance the car's autonomous capabilities.</p>
+                <div class="tags flex-row">
+                  <span>Deep Learning</span>
+                  <span>Computer Vision</span>
+                  <span>Self-driving cars</span>
+                  <span>Research</span>
+                </div>
+                <p class="white">Based on NVIDIA Jetson-Inference</p>
+              </div>
+              <img class="section-image" src="images/project-car.png" alt="Car" />
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="full-section nav-section">
+      <div class="blurry-circle circle1"></div>
+      <div class="blurry-circle circle2"></div>
+      <div class="blurry-circle circle3"></div>
+      <div class="blurry-circle circle4"></div>
+
+      <h1>
+        Get in touch with me<br />
+        <a href="mailto: leon.muller@epfl.ch"><span class="blue">leon.muller@epfl.ch</span></a>
+      </h1>
+    </div>
   </body>
+
+  <footer>
+    <div class="nav-button">Léon Muller 2024</div>
+  </footer>
+
+  <script>
+    // Section content hover effect
+    document.querySelectorAll('.section-content').forEach(function(element) {
+      element.addEventListener('mouseover', function() {
+        this.closest('.section-content-wrapper').style.background = 'var(--gradient)';
+      });
+      element.addEventListener('mouseout', function() {
+        this.closest('.section-content-wrapper').style.background = '';
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Color in white the first navigation button when the section is in the viewport (from transparent-white to white)
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('.nav-section');
+      const navigationButtons = document.querySelectorAll('.nav-button');
+
+      sections.forEach(function(section, index) {
+        const rect = section.getBoundingClientRect();
+        const opacity = 1 - rect.top / window.innerHeight;
+
+        if (opacity > 0.5) {
+          navigationButtons[index].style.color = 'var(--white)';
+        } else {
+          navigationButtons[index].style.color = 'var(--transparent-white)';
+        }
+      });
+    });
+  </script>  
 </html>
