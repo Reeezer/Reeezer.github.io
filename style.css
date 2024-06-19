@@ -55,7 +55,7 @@ html {
 
 body {
   background-color: var(--black);
-  max-width: 1424px;
+  max-width: var(--max-width);
   padding: 32px;
 }
 
@@ -106,7 +106,7 @@ hr {
   border: 0;
   height: 1px;
   background: var(--gradient);
-  width: 100vw;
+  width: 100%;
   max-width: var(--max-width-section);
 }
 
@@ -115,7 +115,7 @@ a {
 }
 
 footer {
-  width: 100vw;
+  width: 100%;
   max-width: var(--max-width);
   align-items: start;
 }
@@ -144,14 +144,14 @@ footer {
 
 .full-section {
   max-width: var(--max-width);
-  width: 100vw;
+  width: 100%;
   padding: 384px 0;
 }
 
 .banner {
   gap: 128px;
   max-width: var(--max-width-content);
-  width: 100vw;
+  width: 100%;
 }
 
 .down-button {
@@ -163,17 +163,17 @@ footer {
   max-width: var(--max-width-section);
   gap: 24px;
   padding: 192px 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .section-container {
   max-width: var(--max-width-content);
-  width: 100vw;
+  width: 100%;
   gap: 24px;
 }
 
 .section-title {
-  width: 100vw;
+  width: 100%;
   max-width: var(--max-width-section);
 }
 
@@ -231,7 +231,7 @@ footer {
   z-index: 100;
   max-width: var(--max-width);
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
 }
 
 /* --- Buttons --- */
@@ -268,61 +268,77 @@ footer {
 }
 
 #hero-header .circle1 {
-  width: 600px;
-  height: 400px;
+  width: 20vw;
+  height: 30vh;
   top: 5%;
   left: -15%;
-  opacity: 0.20;
+  opacity: 0.2;
 }
 
 #hero-header .circle2 {
-  width: 800px;
-  height: 500px;
+  width: 25vw;
+  height: 35vh;
   top: 54%;
   left: -10%;
 }
 
 #hero-header .circle3 {
-  width: 400px;
-  height: 300px;
+  width: 15vw;
+  height: 25vh;
   top: 20%;
   left: 70%;
 }
 
 #hero-header .circle4 {
-  width: 800px;
-  height: 600px;
+  width: 30vw;
+  height: 40vh;
   top: 50%;
   left: 60%;
   opacity: 0.25;
 }
 
 #contact .circle1 {
-  width: 600px;
-  height: 400px;
+  width: 20vw;
+  height: 30vh;
   top: 5%;
   left: 10%;
-  opacity: 0.20;
+  opacity: 0.2;
 }
 
 #contact .circle2 {
-  width: 500px;
-  height: 500px;
+  width: 25vw;
+  height: 35vh;
   top: 54%;
   left: -5%;
 }
 
 #contact .circle3 {
-  width: 400px;
-  height: 300px;
+  width: 15vw;
+  height: 25vh;
   top: 20%;
   left: 70%;
 }
 
 #contact .circle4 {
-  width: 800px;
-  height: 600px;
+  width: 30vw;
+  height: 40vh;
   top: 50%;
   left: 60%;
   opacity: 0.25;
+}
+
+/* --- Media Queries --- */
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .navigation .nav-button {
+    display: none;
+  }
+
+  .section-content {
+    flex-direction: column;
+  }
 }
