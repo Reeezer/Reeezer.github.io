@@ -263,7 +263,7 @@ footer {
   background-color: var(--blue);
   border-radius: 50%;
   opacity: 0.35;
-  filter: blur(600px);
+  filter: blur(200px);
   z-index: -1;
 }
 
