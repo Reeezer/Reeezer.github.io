@@ -58,6 +58,7 @@ body {
   max-width: var(--max-width);
   padding: 32px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 h1 {
