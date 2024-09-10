@@ -229,9 +229,8 @@ footer {
 
 .section-image {
   flex: 0 1 auto;
-  width: 100vw;
-  max-width: 160px;
-  height: auto;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 16px;
   border: 1px solid var(--transparent-white);
