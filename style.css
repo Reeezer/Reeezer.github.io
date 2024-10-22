@@ -156,6 +156,7 @@ footer {
 /* --- Layout --- */
 
 .full-section {
+  position: relative;
   max-width: var(--max-width);
   width: 100vw;
   padding: 384px 0;
@@ -272,10 +273,6 @@ footer {
 }
 
 /* --- Blue lights --- */
-
-.full-section {
-  position: relative;
-}
 
 .blurry-circle {
   content: '';
