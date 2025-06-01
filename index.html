@@ -39,6 +39,61 @@
       </div>
     </div>
 
+    <!-- Skills Carousel -->
+    <div class="skills-carousel-wrapper">
+      <div class="skills-carousel-container">
+        <div class="skills-carousel-track">
+          <div class="skills-carousel" id="skillsCarousel">
+            <!-- Software / Programming Languages -->
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/python-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/java-plain.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/cplusplus-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/c-plain.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/csharp-plain.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/visualbasic-plain.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/kotlin-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/lua-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/scala-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/dart-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/bash-plain.png" /></div>
+
+            <!-- AI / Data Science -->
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/pytorch-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/scikitlearn-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/pandas-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/opencv-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/nvidia-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/dataiku-dark.png" /></div>
+
+            <!-- Frameworks -->
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/flutter-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/qt-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/xamarin-original.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/dotnet-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/android-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/unity-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/amazonwebservices-dark.png" /></div>
+
+            <!-- Web -->
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/html5-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/css3-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/javascript-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/vuejs-plain.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/django-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/laravel-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/spring-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/php-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/mysql-dark.png" /></div>
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/s/postman-dark.png" /></div>
+
+            <!-- Design -->
+            <div class="skills-carousel-item"><img src="https://logo.svgcdn.com/d/figma-plain.png" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- About -->
     <div id="about" class="section nav-section">
       <div class="section-title flex-row">
@@ -321,7 +376,7 @@
           <div class="section-content-wrapper">
             <div class="section-content">
               <div class="subtitle">
-                <h3>Almost a Tinkerer @ <span class="blue">Itch.io</span></h3>
+                <h3>Almost a Tinkerer @ <span class="blue">HES-SO Arc Ingéniérie</span></h3>
               </div>
         
               <div class="section-body flex-row">
@@ -429,6 +484,10 @@
 </body>
 
 <script>
+  // Duplicate carousel items for seamless infinite scroll
+  const carousel = document.getElementById("skillsCarousel");
+  carousel.innerHTML += carousel.innerHTML;
+
   // Section content hover effect
   document.querySelectorAll('.section-content').forEach(function (element) {
     element.addEventListener('mouseover', function () {
