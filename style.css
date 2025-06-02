@@ -382,7 +382,7 @@ footer {
   content: '';
   position: absolute;
   height: 48px;
-  width: 64px;
+  width: 128px;
   z-index: 2;
 }
 
