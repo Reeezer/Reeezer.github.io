@@ -109,8 +109,7 @@ hr {
   border: 0;
   height: 1px;
   background: var(--gradient);
-  width: 100vw;
-  max-width: var(--max-width-section);
+  width: 100%;
 }
 
 a {
@@ -166,7 +165,6 @@ footer {
 .banner {
   gap: 128px;
   max-width: var(--max-width-content);
-  width: 100vw;
 }
 
 .down-button {
@@ -178,18 +176,15 @@ footer {
   max-width: var(--max-width-section);
   gap: 24px;
   padding: 192px 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .section-container {
-  max-width: var(--max-width-content);
-  width: 100vw;
   gap: 24px;
 }
 
 .section-title {
-  width: 100vw;
-  max-width: var(--max-width-section);
+  width: 100%;
 }
 
 .section-content-wrapper {
@@ -198,7 +193,6 @@ footer {
 }
 
 .section-content {
-  width: 100vw;
   max-width: var(--max-width-content);
   gap: 32px;
   padding: 24px;
@@ -253,8 +247,8 @@ footer {
 .navigation {
   position: fixed;
   z-index: 100;
-  max-width: var(--max-width);
   justify-content: space-between;
+  max-width: var(--max-width);
   width: 100vw;
 }
 
@@ -374,7 +368,6 @@ footer {
   overflow: hidden;
   position: relative;
   height: 48px;
-  width: 100vw;
   max-width: var(--max-width-section);
 }
 
