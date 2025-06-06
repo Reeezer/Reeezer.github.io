@@ -368,6 +368,7 @@ footer {
   overflow: hidden;
   position: relative;
   height: 48px;
+  width: 100vw;
   max-width: var(--max-width-section);
 }
 
