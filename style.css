@@ -112,6 +112,10 @@ h3 a {
   object-fit: contain;
 }
 
+.white-icon {
+  filter: brightness(0) invert(1);
+}
+
 hr {
   border: 0;
   height: 1px;
