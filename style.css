@@ -17,6 +17,7 @@
   --font-weight-semi-bold: 600;
   --font-weight-normal: 400;
   --icon-size: 36px;
+  --small-icon-size: 24px;
   --max-width: 1424px;
   --max-width-section: 1136px;
   --max-width-content: 848px;
@@ -105,6 +106,12 @@ h3 a {
   object-fit: contain;
 }
 
+.small-icon {
+  width: var(--small-icon-size);
+  height: var(--small-icon-size);
+  object-fit: contain;
+}
+
 hr {
   border: 0;
   height: 1px;
@@ -144,6 +151,14 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.flex-row-small-gap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .flex-column {
