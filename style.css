@@ -66,6 +66,7 @@ body {
 h1 {
   font-size: var(--font-size-h1);
   font-weight: var(--font-weight-bold);
+  font-family: sans-serif;
   text-align: center;
   display: block;
   color: var(--white);
