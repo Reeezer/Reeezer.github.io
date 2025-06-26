@@ -2,9 +2,11 @@
 :root {
   --blue: rgb(19, 85, 227);
   --black: rgb(0, 5, 10);
+  --gray: rgb(0, 5, 10);
   --white: rgb(255, 255, 255);
   --gradient: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(19, 85, 227, 0.3));
   --transparent-white: rgba(255, 255, 255, 0.7);
+  --light-transparent-white: rgba(255, 255, 255, 0.2);
   --tag-background: rgba(255, 255, 255, 0.1);
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Roboto', sans-serif;
@@ -236,7 +238,15 @@ footer {
   align-items: start;
 }
 
-.subtitle {
+.card-head {
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+
+.title {
   align-items: start;
   gap: 4px;
 }
