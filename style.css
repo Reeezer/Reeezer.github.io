@@ -183,7 +183,6 @@ footer {
   gap: 24px;
   width: 100%;
   max-width: var(--max-width-section);
-  margin-top: 32px;
 }
 
 .full-card {
