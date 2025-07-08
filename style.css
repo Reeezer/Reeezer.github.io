@@ -219,7 +219,7 @@ footer {
   max-width: var(--max-width-section);
   gap: 24px;
   padding: 192px 64px;
-  /* width: 100%; */
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -512,6 +512,10 @@ footer {
   .section-content-wrapper {
     border: none;
     background: transparent;
+  }
+
+  .section {
+    padding: 192px 8px;
   }
 }
 
