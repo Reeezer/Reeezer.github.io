@@ -4,9 +4,9 @@
   --black: rgb(0, 5, 10);
   --white: rgb(255, 255, 255);
   --gradient: linear-gradient(135deg, rgba(19, 85, 227, 0.4), rgba(0, 150, 255, 0.4), rgba(0, 230, 255, 0.4), rgba(19, 85, 227, 0.4));
-  --transparent-white: rgba(255, 255, 255, 0.7);
+  --transparent-white: rgba(255, 255, 255, 0.6);
   --light-transparent-white: rgba(255, 255, 255, 0.2);
-  --tag-background: rgba(255, 255, 255, 0.1);
+  --light-transparent-blue: rgba(19, 85, 227, 0.2);
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Roboto', sans-serif;
   --font-size-base: 18px;
@@ -303,7 +303,8 @@ footer {
 }
 
 .tags span {
-  background-color: var(--tag-background);
+  color: var(--blue);
+  background-color: var(--light-transparent-blue);
   padding: 8px 12px;
   border-radius: 50px;
   font-size: var(--font-size-sub);
@@ -331,7 +332,7 @@ footer {
   border-radius: 12px;
   padding: 4px 0px;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--light-transparent-white);
   overflow: hidden;
 }
 
