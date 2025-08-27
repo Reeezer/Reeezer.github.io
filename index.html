@@ -746,25 +746,3 @@
 </script>
 
 </html>
-    });
-  });
-
-  // Color in white the first navigation button when the section is in the viewport (from transparent-white to white)
-  window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('.nav-section');
-    const navigationButtons = document.querySelectorAll('.nav-button');
-
-    sections.forEach(function (section, index) {
-      const rect = section.getBoundingClientRect();
-      const opacity = 1 - rect.top / window.innerHeight;
-
-      if (opacity > 0.5) {
-        navigationButtons[index].style.color = 'var(--white)';
-      } else {
-        navigationButtons[index].style.color = 'var(--transparent-white)';
-      }
-    });
-  });
-</script>
-
-</html>
