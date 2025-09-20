@@ -421,201 +421,223 @@
 
       <hr />
 
+      <div class="project-categories-scroll">
+        <div class="project-category active nav-button" data-category="all">All</div>
+        <div class="project-category nav-button" data-category="genai">GenAI</div>
+        <div class="project-category nav-button" data-category="ml">ML</div>
+        <div class="project-category nav-button" data-category="robotics">Robotics</div>
+        <div class="project-category nav-button" data-category="web-soft-games">Web/Soft/Games</div>
+      </div>
+
       <div class="section-container">
-        <a href="https://github.com/Reeezer/rag-agent" target="_blank">
-          <div class="section-content-wrapper">
-            <div class="section-content">
-              <div class="card-head">
-                <div class="title">
-                  <h3>Custom Agent Framework for Regulatory QA</h3>
-                </div>
-                <img class="white-icon small-icon" src="images/buttons/link.png" />
-              </div>
-
-              <div class="section-body flex-row">
-                <div class="content">
-                  <p>
-                    Built a custom agent framework inspired by Smolagents to handle complex regulatory queries. Designed a modular orchestrator coordinating tools (retrieval, synthesis, reasoning) through multi-step planning, with Gemini for language understanding and fully extensible agent logic.
-                  </p>
-                  <div class="tags flex-row">
-                    <span>Agents</span>
-                    <span>Orchestration</span>
-                    <span>GenAI</span>
+        <div class="project-item" data-category="genai">
+          <a href="https://github.com/Reeezer/rag-agent" target="_blank">
+            <div class="section-content-wrapper">
+              <div class="section-content">
+                <div class="card-head">
+                  <div class="title">
+                    <h3>Custom Agent Framework for Regulatory QA</h3>
                   </div>
-                  <p class="white">Based on Gemini API</p>
+                  <img class="white-icon small-icon" src="images/buttons/link.png" />
                 </div>
-                <img class="section-image" src="images/projects/robot.png" alt="Agents" />
-              </div>
-            </div>
-          </div>
-        </a>
 
-        <!-- <a href="" target="_blank"> -->
-        <div class="">
-          <div class="section-content">
-            <div class="card-head">
-              <div class="title">
-                <h3>Legal Document QA with Retrieval-Augmented Generation</h3>
-              </div>
-            </div>
-
-            <div class="section-body flex-row">
-              <div class="content">
-                <p>
-                  Developed a RAG pipeline for querying EPFL legal documents, indexing them in a FAISS vector database for scalable semantic search. Combined real-time retrieval with context injection into a language model to generate grounded, source-backed answers.
-                </p>
-                <div class="tags flex-row">
-                  <span>RAG</span>
-                  <span>Vector Database</span>
-                  <span>Semantic Search</span>
+                <div class="section-body flex-row">
+                  <div class="content">
+                    <p>
+                      Built a custom agent framework inspired by Smolagents to handle complex regulatory queries. Designed a modular orchestrator coordinating tools (retrieval, synthesis, reasoning) through multi-step planning, with Gemini for language understanding and fully extensible agent logic.
+                    </p>
+                    <div class="tags flex-row">
+                      <span>Agents</span>
+                      <span>Orchestration</span>
+                      <span>GenAI</span>
+                    </div>
+                    <p class="white">Based on Gemini API</p>
+                  </div>
+                  <img class="section-image" src="images/projects/robot.png" alt="Agents" />
                 </div>
-                <p class="white">Based on LangChain, FAISS & OpenAI APIs</p>
               </div>
-              <img class="section-image" src="images/projects/glass.png" alt="Watch" />
             </div>
-          </div>
+          </a>
         </div>
-        <!-- </a> -->
 
-        <a href="https://drive.google.com/file/d/1svD3XeaeesHfSpbOXNKtkWR9HDDjAzO9/view?usp=sharing" target="_blank">
-          <div class="section-content-wrapper">
+        <div class="project-item" data-category="genai">
+          <!-- <a href="" target="_blank"> -->
+          <div class="">
             <div class="section-content">
               <div class="card-head">
                 <div class="title">
-                  <h3>Personnalized Spinal Cord Reconstruction</h3>
+                  <h3>Legal Document QA with Retrieval-Augmented Generation</h3>
                 </div>
-                <img class="white-icon small-icon" src="images/buttons/link.png" />
               </div>
 
               <div class="section-body flex-row">
                 <div class="content">
                   <p>
-                    Developed a foundation model for spinal MRI reconstruction to support surgical planning. Used a self-supervised 3D Masked Autoencoder architecture (based on Vision Transformers) to learn detailed anatomical features from unlabeled data, which were fine-tuned for spinal root segmentation and artifact correction.
+                    Developed a RAG pipeline for querying EPFL legal documents, indexing them in a FAISS vector database for scalable semantic search. Combined real-time retrieval with context injection into a language model to generate grounded, source-backed answers.
                   </p>
                   <div class="tags flex-row">
-                    <span>Neuroimaging</span>
-                    <span>Foundation Model</span>
+                    <span>RAG</span>
+                    <span>Vector Database</span>
+                    <span>Semantic Search</span>
+                  </div>
+                  <p class="white">Based on LangChain, FAISS & OpenAI APIs</p>
+                </div>
+                <img class="section-image" src="images/projects/glass.png" alt="Watch" />
+              </div>
+            </div>
+          </div>
+          <!-- </a> -->
+        </div>
+
+        <div class="project-item" data-category="ml">
+          <a href="https://drive.google.com/file/d/1svD3XeaeesHfSpbOXNKtkWR9HDDjAzO9/view?usp=sharing" target="_blank">
+            <div class="section-content-wrapper">
+              <div class="section-content">
+                <div class="card-head">
+                  <div class="title">
+                    <h3>Personnalized Spinal Cord Reconstruction</h3>
+                  </div>
+                  <img class="white-icon small-icon" src="images/buttons/link.png" />
+                </div>
+
+                <div class="section-body flex-row">
+                  <div class="content">
+                    <p>
+                      Developed a foundation model for spinal MRI reconstruction to support surgical planning. Used a self-supervised 3D Masked Autoencoder architecture (based on Vision Transformers) to learn detailed anatomical features from unlabeled data, which were fine-tuned for spinal root segmentation and artifact correction.
+                    </p>
+                    <div class="tags flex-row">
+                      <span>Neuroimaging</span>
+                      <span>Foundation Model</span>
+                      <span>Research</span>
+                    </div>
+                    <p class="white">Based on ViT Masked Autoencoders</p>
+                  </div>
+                  <img class="section-image" src="images/projects/spine.png" alt="Brain" />
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="genai,ml">
+          <a href="https://drive.google.com/file/d/1pxAMjD8XzMIBE6YoG0Fv-s8GzeKLffPt/view?usp=sharing" target="_blank">
+            <div class="section-content-wrapper">
+              <div class="section-content">
+                <div class="card-head">
+                  <div class="title">
+                    <h3>AI Tutor for Scientific Courses</h3>
+                  </div>
+                  <img class="white-icon small-icon" src="images/buttons/link.png" />
+                </div>
+
+                <div class="section-body flex-row">
+                  <div class="content">
+                    <p>
+                      Created an AI tutor that explains STEM concepts interactively. Fine-tuned a language model using PEFT, SFT, DPO, and RLHF techniques to improve alignment with academic standards and student expectations. Delivered accurate, step-by-step solutions to support autonomous learning.
+                    </p>
+                    <div class="tags flex-row">
+                      <span>LLMs</span>
+                      <span>Reinforcement Learning</span>
+                      <span>Model Alignment</span>
+                    </div>
+                    <p class="white">Based on OpenAI GPT2</p>
+                  </div>
+                  <img class="section-image" src="images/projects/tutor.png" alt="Library" />
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="ml">
+          <a href="https://drive.google.com/file/d/1RIcsqHeQA6XYrKdrC-ELjlkIgLdTR_o9/view?usp=sharing" target="_blank">
+            <div class="section-content-wrapper">
+              <div class="section-content">
+                <div class="card-head">
+                  <div class="title">
+                    <h3>Decoding Brain Signals for Movement Recovery</h3>
+                  </div>
+                  <img class="white-icon small-icon" src="images/buttons/link.png" />
+                </div>
+
+                <div class="section-body flex-row">
+                  <div class="content">
+                    <p>
+                      Built deep learning models to decode arm movement intentions from ECoG brain signals. Explored architectures like EEGNet and CEBRA to capture motor dynamics, contributing to neurotechnologies for spinal cord injury rehabilitation.
+                    </p>
+                    <div class="tags flex-row">
+                      <span>Time Series</span>
+                      <span>Neurotech</span>
+                    </div>
+                    <p class="white">Based on EEGNet & CEBRA</p>
+                  </div>
+                  <img class="section-image" src="images/projects/brain.png" alt="Brain" />
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="ml,robotics">
+          <!-- <a href="" target="_blank"> -->
+          <div class="">
+            <div class="section-content">
+              <div class="card-head">
+                <div class="title">
+                  <h3>Autonomous Pilot & Target Tracking</h3>
+                </div>
+              </div>
+
+              <div class="section-body flex-row">
+                <div class="content">
+                  <p>
+                    Built a real-time object tracking and autopilot system for JetRacer cars using SSD on NVIDIA Jetson. Combined computer vision with PID control to follow a lead vehicle, enabling stable autonomous navigation in dynamic environments.
+                  </p>
+                  <div class="tags flex-row">
+                    <span>Computer Vision</span>
+                    <span>Robotics</span>
                     <span>Research</span>
                   </div>
-                  <p class="white">Based on ViT Masked Autoencoders</p>
+                  <p class="white">Based on NVIDIA Jetson-Inference & SSD</p>
                 </div>
-                <img class="section-image" src="images/projects/spine.png" alt="Brain" />
+                <img class="section-image" src="images/projects/car.png" alt="Car" />
               </div>
             </div>
           </div>
-        </a>
-
-        <a href="https://drive.google.com/file/d/1pxAMjD8XzMIBE6YoG0Fv-s8GzeKLffPt/view?usp=sharing" target="_blank">
-          <div class="section-content-wrapper">
-            <div class="section-content">
-              <div class="card-head">
-                <div class="title">
-                  <h3>AI Tutor for Scientific Courses</h3>
-                </div>
-                <img class="white-icon small-icon" src="images/buttons/link.png" />
-              </div>
-
-              <div class="section-body flex-row">
-                <div class="content">
-                  <p>
-                    Created an AI tutor that explains STEM concepts interactively. Fine-tuned a language model using PEFT, SFT, DPO, and RLHF techniques to improve alignment with academic standards and student expectations. Delivered accurate, step-by-step solutions to support autonomous learning.
-                  </p>
-                  <div class="tags flex-row">
-                    <span>LLMs</span>
-                    <span>Reinforcement Learning</span>
-                    <span>Model Alignment</span>
-                  </div>
-                  <p class="white">Based on OpenAI GPT2</p>
-                </div>
-                <img class="section-image" src="images/projects/tutor.png" alt="Library" />
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a href="https://drive.google.com/file/d/1RIcsqHeQA6XYrKdrC-ELjlkIgLdTR_o9/view?usp=sharing" target="_blank">
-          <div class="section-content-wrapper">
-            <div class="section-content">
-              <div class="card-head">
-                <div class="title">
-                  <h3>Decoding Brain Signals for Movement Recovery</h3>
-                </div>
-                <img class="white-icon small-icon" src="images/buttons/link.png" />
-              </div>
-
-              <div class="section-body flex-row">
-                <div class="content">
-                  <p>
-                    Built deep learning models to decode arm movement intentions from ECoG brain signals. Explored architectures like EEGNet and CEBRA to capture motor dynamics, contributing to neurotechnologies for spinal cord injury rehabilitation.
-                  </p>
-                  <div class="tags flex-row">
-                    <span>Time Series</span>
-                    <span>Neurotech</span>
-                  </div>
-                  <p class="white">Based on EEGNet & CEBRA</p>
-                </div>
-                <img class="section-image" src="images/projects/brain.png" alt="Brain" />
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- <a href="" target="_blank"> -->
-        <div class="">
-          <div class="section-content">
-            <div class="card-head">
-              <div class="title">
-                <h3>Autonomous Pilot & Target Tracking</h3>
-              </div>
-            </div>
-
-            <div class="section-body flex-row">
-              <div class="content">
-                <p>
-                  Built a real-time object tracking and autopilot system for JetRacer cars using SSD on NVIDIA Jetson. Combined computer vision with PID control to follow a lead vehicle, enabling stable autonomous navigation in dynamic environments.
-                </p>
-                <div class="tags flex-row">
-                  <span>Computer Vision</span>
-                  <span>Robotics</span>
-                  <span>Research</span>
-                </div>
-                <p class="white">Based on NVIDIA Jetson-Inference & SSD</p>
-              </div>
-              <img class="section-image" src="images/projects/car.png" alt="Car" />
-            </div>
-          </div>
+          <!-- </a> -->
         </div>
-        <!-- </a> -->
 
-        <a href="https://frost-dev.itch.io/almost-a-tinkerer" target="_blank">
-          <div class="section-content-wrapper">
-            <div class="section-content">
-              <div class="card-head">
-                <div class="title">
-                  <h3>Almost a Tinkerer</h3>
-                </div>
-                <img class="white-icon small-icon" src="images/buttons/link.png" />
-              </div>
-
-              <div class="section-body flex-row">
-                <div class="content">
-                  <p>
-                    Designed a relaxing factory-building game where players automate furniture production. The game evolves from structured tasks to a creative sandbox, with unlockable buildings and mechanics. Built entirely from scratch, including code, gameplay design, and pixel art.
-                  </p>
-                  <div class="tags flex-row">
-                    <span>Game Dev</span>
-                    <span>Simulation</span>
-                    <span>Pixel Art</span>
-                    <span>Automation</span>
-                    <span>UX Design</span>
+        <div class="project-item" data-category="web-soft-games">
+          <a href="https://frost-dev.itch.io/almost-a-tinkerer" target="_blank">
+            <div class="section-content-wrapper">
+              <div class="section-content">
+                <div class="card-head">
+                  <div class="title">
+                    <h3>Almost a Tinkerer</h3>
                   </div>
-                  <p class="white">Based on Shapez.io & Factorio</p>
+                  <img class="white-icon small-icon" src="images/buttons/link.png" />
                 </div>
-                <img class="section-image" src="images/projects/tinkerer.png" alt="Factory Game" />
+
+                <div class="section-body flex-row">
+                  <div class="content">
+                    <p>
+                      Designed a relaxing factory-building game where players automate furniture production. The game evolves from structured tasks to a creative sandbox, with unlockable buildings and mechanics. Built entirely from scratch, including code, gameplay design, and pixel art.
+                    </p>
+                    <div class="tags flex-row">
+                      <span>Game Dev</span>
+                      <span>Simulation</span>
+                      <span>Pixel Art</span>
+                      <span>Automation</span>
+                      <span>UX Design</span>
+                    </div>
+                    <p class="white">Based on Shapez.io & Factorio</p>
+                  </div>
+                  <img class="section-image" src="images/projects/tinkerer.png" alt="Factory Game" />
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -772,6 +794,26 @@
       } else {
         navigationButtons[index].style.color = 'var(--transparent-white)';
       }
+    });
+  });
+
+  // Project category filtering
+  document.querySelectorAll('.project-category').forEach(btn => {
+    btn.addEventListener('click', function () {
+      // Set active category button
+      document.querySelectorAll('.project-category').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      // Filter projects
+      const selected = this.dataset.category;
+      document.querySelectorAll('.project-item').forEach(item => {
+        if (selected === 'all') {
+          item.hidden = false;
+        } else {
+          const cats = item.dataset.category.split(',').map(c => c.trim());
+          item.hidden = !cats.includes(selected);
+        }
+      });
     });
   });
 </script>
