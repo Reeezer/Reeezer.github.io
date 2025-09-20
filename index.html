@@ -422,11 +422,11 @@
       <hr />
 
       <div class="project-categories-scroll">
-        <div class="project-category active nav-button" data-category="all">All</div>
-        <div class="project-category nav-button" data-category="genai">GenAI</div>
-        <div class="project-category nav-button" data-category="ml">ML</div>
-        <div class="project-category nav-button" data-category="robotics">Robotics</div>
-        <div class="project-category nav-button" data-category="web-soft-games">Web/Soft/Games</div>
+        <button class="project-category active nav-button" data-category="all">All</button>
+        <button class="project-category nav-button" data-category="genai">GenAI</button>
+        <button class="project-category nav-button" data-category="ml">ML</button>
+        <button class="project-category nav-button" data-category="robotics">Robotics</button>
+        <button class="project-category nav-button" data-category="web-soft-games">Web/Soft/Games</button>
       </div>
 
       <div class="section-container">
@@ -731,88 +731,90 @@
 </body>
 
 <script>
-  // Triple the carousel items for seamless infinite scroll (only once)
-  const carousels = document.querySelectorAll('.skills-carousel-content');
-  carousels.forEach(carousel => {
-    if (!carousel.dataset.duplicated) {
-      carousel.innerHTML += carousel.innerHTML + carousel.innerHTML;
-      carousel.dataset.duplicated = "true";
-    }
-  });
-
-  function setCarouselAnimation() {
+    document.addEventListener('DOMContentLoaded', function() {
+    // Triple the carousel items for seamless infinite scroll (only once)
+    const carousels = document.querySelectorAll('.skills-carousel-content');
     carousels.forEach(carousel => {
-      requestAnimationFrame(() => {
-        const gap = parseInt(getComputedStyle(carousel).gap) || 0;
-        const originalItems = Array.from(carousel.children).slice(0, carousel.children.length / 3);
-        const distance = Math.ceil(originalItems.reduce((acc, item) => acc + item.getBoundingClientRect().width + 2, 0) + gap * (originalItems.length - 1));
-        carousel.style.setProperty('--carousel-distance', `${distance}px`);
-        
-        // Set duration for consistent speed
-        const speed = 30;
-        const duration = distance / speed;
-        carousel.style.setProperty('--carousel-duration', `${duration}s`);
-      });
-    });
-  }
-
-  setCarouselAnimation();
-  window.addEventListener('resize', setCarouselAnimation);
-
-  // Section content hover effect
-  document.querySelectorAll('.section-content').forEach(function (element) {
-    element.addEventListener('mouseover', function () {
-      this.closest('.section-content-wrapper').style.background = 'var(--gradient)';
-    });
-    element.addEventListener('mouseout', function () {
-      this.closest('.section-content-wrapper').style.background = '';
-    });
-  });
-
-  // Smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-
-  // Color in white the first navigation button when the section is in the viewport (from transparent-white to white)
-  window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('.nav-section');
-    const navigationButtons = document.querySelectorAll('.nav-button');
-
-    sections.forEach(function (section, index) {
-      const rect = section.getBoundingClientRect();
-      const opacity = 1 - rect.top / window.innerHeight;
-
-      if (opacity > 0.5) {
-        navigationButtons[index].style.color = 'var(--white)';
-      } else {
-        navigationButtons[index].style.color = 'var(--transparent-white)';
+      if (!carousel.dataset.duplicated) {
+        carousel.innerHTML += carousel.innerHTML + carousel.innerHTML;
+        carousel.dataset.duplicated = "true";
       }
     });
-  });
 
-  // Project category filtering
-  document.querySelectorAll('.project-category').forEach(btn => {
-    btn.addEventListener('click', function () {
-      // Set active category button
-      document.querySelectorAll('.project-category').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
+    function setCarouselAnimation() {
+      carousels.forEach(carousel => {
+        requestAnimationFrame(() => {
+          const gap = parseInt(getComputedStyle(carousel).gap) || 0;
+          const originalItems = Array.from(carousel.children).slice(0, carousel.children.length / 3);
+          const distance = Math.ceil(originalItems.reduce((acc, item) => acc + item.getBoundingClientRect().width + 2, 0) + gap * (originalItems.length - 1));
+          carousel.style.setProperty('--carousel-distance', `${distance}px`);
+          
+          // Set duration for consistent speed
+          const speed = 30;
+          const duration = distance / speed;
+          carousel.style.setProperty('--carousel-duration', `${duration}s`);
+        });
+      });
+    }
 
-      // Filter projects
-      const selected = this.dataset.category;
-      document.querySelectorAll('.project-item').forEach(item => {
-        if (selected === 'all') {
-          item.hidden = false;
+    setCarouselAnimation();
+    window.addEventListener('resize', setCarouselAnimation);
+
+    // Section content hover effect
+    document.querySelectorAll('.section-content').forEach(function (element) {
+      element.addEventListener('mouseover', function () {
+        this.closest('.section-content-wrapper').style.background = 'var(--gradient)';
+      });
+      element.addEventListener('mouseout', function () {
+        this.closest('.section-content-wrapper').style.background = '';
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Color in white the first navigation button when the section is in the viewport (from transparent-white to white)
+    window.addEventListener('scroll', function () {
+      const sections = document.querySelectorAll('.nav-section');
+      const navigationButtons = document.querySelectorAll('.nav-button');
+
+      sections.forEach(function (section, index) {
+        const rect = section.getBoundingClientRect();
+        const opacity = 1 - rect.top / window.innerHeight;
+
+        if (opacity > 0.5) {
+          navigationButtons[index].style.color = 'var(--white)';
         } else {
-          const cats = item.dataset.category.split(',').map(c => c.trim());
-          item.hidden = !cats.includes(selected);
+          navigationButtons[index].style.color = 'var(--transparent-white)';
         }
+      });
+    });
+
+    // Project category filtering
+    document.querySelectorAll('.project-category').forEach(btn => {
+      btn.addEventListener('click', function () {
+        // Set active category button
+        document.querySelectorAll('.project-category').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        // Filter projects
+        const selected = this.dataset.category;
+        document.querySelectorAll('.project-item').forEach(item => {
+          if (selected === 'all') {
+            item.hidden = false;
+          } else {
+            const cats = item.dataset.category.split(',').map(c => c.trim());
+            item.hidden = !cats.includes(selected);
+          }
+        });
       });
     });
   });
