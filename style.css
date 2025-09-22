@@ -524,11 +524,12 @@ footer {
 /* --- Projects tab --- */
 
 .project-categories-scroll {
+  align-items: center;
   display: flex;
   flex-direction: row;
   scrollbar-width: thin;
   overflow-x: auto;
-  max-width: var(--max-width-section);
+  max-width: var(--max-width-content);
   -webkit-overflow-scrolling: touch;
 }
 
