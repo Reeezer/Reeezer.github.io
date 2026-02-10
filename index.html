@@ -8,6 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/sections/about.png" />
+  <script>
+    // Apply saved theme immediately to prevent flash of unstyled content
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -740,11 +749,11 @@
     const themeIcon = document.getElementById('theme-icon');
     const htmlElement = document.documentElement;
     
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-      htmlElement.classList.add('light-theme');
+    // Set the correct icon based on current theme
+    if (htmlElement.classList.contains('light-theme')) {
       themeIcon.src = 'images/buttons/moon.svg';
+    } else {
+      themeIcon.src = 'images/buttons/sun.svg';
     }
     
     // Toggle theme on button click
