@@ -8,6 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/sections/about.png" />
+  <script>
+    // Apply saved theme immediately to prevent flash of unstyled content
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -22,6 +31,9 @@
       <a class="nav-button" href="#projects">Projects</a>
       <a class="nav-button" href="#volunteering">Volunteering</a>
       <a class="nav-button" href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <img id="theme-icon" src="images/buttons/sun.svg" alt="Toggle theme" />
+      </button>
     </div>
   </header>
 
@@ -732,6 +744,33 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlElement = document.documentElement;
+    
+    // Function to update theme icon based on current theme
+    function updateThemeIcon() {
+      if (htmlElement.classList.contains('light-theme')) {
+        themeIcon.src = 'images/buttons/moon.svg';
+      } else {
+        themeIcon.src = 'images/buttons/sun.svg';
+      }
+    }
+    
+    // Set initial icon
+    updateThemeIcon();
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', function() {
+      htmlElement.classList.toggle('light-theme');
+      updateThemeIcon();
+      
+      // Save preference
+      const theme = htmlElement.classList.contains('light-theme') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+    });
+
     // Triple the carousel items for seamless infinite scroll (only once)
     const carousels = document.querySelectorAll('.skills-carousel-content');
     carousels.forEach(carousel => {

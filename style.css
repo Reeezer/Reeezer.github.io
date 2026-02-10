@@ -46,6 +46,16 @@
   --max-width-content: min(848px, calc(100vw - var(--padding-tiny) * 2));
 }
 
+/* Light theme variables */
+:root.light-theme {
+  --black: rgb(245, 248, 250);
+  --light-black: rgb(235, 240, 245);
+  --white: rgb(0, 5, 10);
+  --transparent-white: rgba(0, 5, 10, 0.7);
+  --light-transparent-white: rgba(0, 5, 10, 0.15);
+  --box-shadow-base: 0 0 48px rgba(19, 85, 227, 0.15);
+}
+
 /* --- Global Styles --- */
 
 * {
@@ -353,7 +363,7 @@ footer {
   margin: var(--padding-tiny) var(--padding-xsmall);
   border-radius: var(--border-radius-tiny);
   background-color: transparent;
-  border: var(--border-width-base) solid rgba(255, 255, 255, 0);
+  border: var(--border-width-base) solid transparent;
 }
 
 .nav-button:hover {
@@ -367,6 +377,28 @@ footer {
   font-size: var(--font-size-content);
   font-weight: var(--font-weight-semi-bold);
   color: var(--white);  
+}
+
+.theme-toggle {
+  cursor: pointer;
+  padding: var(--padding-tiny) var(--padding-small);
+  margin: var(--padding-tiny) var(--padding-xsmall);
+  border-radius: var(--border-radius-tiny);
+  background-color: transparent;
+  border: var(--border-width-base) solid transparent;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  border: var(--border-width-base) solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 48px rgba(0, 200, 255, 0.1);
+  background-color: var(--light-black);
+}
+
+.theme-toggle img {
+  width: var(--icon-size-small);
+  height: var(--icon-size-small);
+  object-fit: contain;
 }
 
 /* --- Blue lights --- */
