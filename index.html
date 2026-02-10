@@ -22,6 +22,9 @@
       <a class="nav-button" href="#projects">Projects</a>
       <a class="nav-button" href="#volunteering">Volunteering</a>
       <a class="nav-button" href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <img id="theme-icon" src="images/buttons/sun.svg" alt="Toggle theme" />
+      </button>
     </div>
   </header>
 
@@ -732,6 +735,31 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlElement = document.documentElement;
+    
+    // Check for saved theme preference or default to dark mode
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      htmlElement.classList.add('light-theme');
+      themeIcon.src = 'images/buttons/moon.svg';
+    }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', function() {
+      htmlElement.classList.toggle('light-theme');
+      
+      if (htmlElement.classList.contains('light-theme')) {
+        themeIcon.src = 'images/buttons/moon.svg';
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.src = 'images/buttons/sun.svg';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
     // Triple the carousel items for seamless infinite scroll (only once)
     const carousels = document.querySelectorAll('.skills-carousel-content');
     carousels.forEach(carousel => {
