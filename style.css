@@ -363,7 +363,7 @@ footer {
   margin: var(--padding-tiny) var(--padding-xsmall);
   border-radius: var(--border-radius-tiny);
   background-color: transparent;
-  border: var(--border-width-base) solid rgba(255, 255, 255, 0);
+  border: var(--border-width-base) solid transparent;
 }
 
 .nav-button:hover {
@@ -385,7 +385,7 @@ footer {
   margin: var(--padding-tiny) var(--padding-xsmall);
   border-radius: var(--border-radius-tiny);
   background-color: transparent;
-  border: var(--border-width-base) solid rgba(255, 255, 255, 0);
+  border: var(--border-width-base) solid transparent;
   transition: all 0.3s ease;
 }
 

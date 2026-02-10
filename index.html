@@ -749,24 +749,26 @@
     const themeIcon = document.getElementById('theme-icon');
     const htmlElement = document.documentElement;
     
-    // Set the correct icon based on current theme
-    if (htmlElement.classList.contains('light-theme')) {
-      themeIcon.src = 'images/buttons/moon.svg';
-    } else {
-      themeIcon.src = 'images/buttons/sun.svg';
+    // Function to update theme icon based on current theme
+    function updateThemeIcon() {
+      if (htmlElement.classList.contains('light-theme')) {
+        themeIcon.src = 'images/buttons/moon.svg';
+      } else {
+        themeIcon.src = 'images/buttons/sun.svg';
+      }
     }
+    
+    // Set initial icon
+    updateThemeIcon();
     
     // Toggle theme on button click
     themeToggle.addEventListener('click', function() {
       htmlElement.classList.toggle('light-theme');
+      updateThemeIcon();
       
-      if (htmlElement.classList.contains('light-theme')) {
-        themeIcon.src = 'images/buttons/moon.svg';
-        localStorage.setItem('theme', 'light');
-      } else {
-        themeIcon.src = 'images/buttons/sun.svg';
-        localStorage.setItem('theme', 'dark');
-      }
+      // Save preference
+      const theme = htmlElement.classList.contains('light-theme') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
     });
 
     // Triple the carousel items for seamless infinite scroll (only once)
