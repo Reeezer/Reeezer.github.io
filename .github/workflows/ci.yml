@@ -16,10 +16,12 @@ jobs:
           node-version: 22
           cache: npm
 
+      # One definition of each gate: CI runs the same npm scripts as `npm run
+      # check` and the pre-commit hooks. `build` already type-checks (tsc -b).
       - run: npm ci
-      - run: npx prettier --check .
-      - run: npx eslint . --max-warnings 0
+      - run: npm run format:check
       - run: npm run lint
+      - run: npm run knip
       - run: npm run build
 
       - name: Install Playwright browsers

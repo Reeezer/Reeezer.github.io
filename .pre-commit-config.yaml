@@ -44,7 +44,7 @@ repos:
 
       - id: typecheck
         name: typecheck (tsc)
-        entry: npm run lint
+        entry: npm run typecheck
         language: system
         types_or: [ts, tsx]
         pass_filenames: false

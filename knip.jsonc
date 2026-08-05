@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  // `ignore` suppresses reports for the vendored shadcn files but keeps them
+  // in the analysis, so the dependencies only they import (radix-ui,
+  // class-variance-authority) still count as used. Do not "tidy" this into
+  // `ignoreFiles` — that excludes the files entirely and would flag those
+  // dependencies as unused.
+  "ignore": ["src/components/ui/**"],
+  // Installed via `uv tool install prek`, not npm — see README.
+  "ignoreBinaries": ["prek"],
+  // types.ts exports the full content contract; some members are only
+  // consumed inside that file, which is fine for a contract module.
+  "ignoreExportsUsedInFile": true,
+}
