@@ -4,10 +4,7 @@ import { profile } from '@/data/profile'
 
 export function Hero() {
   return (
-    <div
-      id="top"
-      className="relative flex w-full max-w-[1424px] flex-col items-center py-36 md:py-56"
-    >
+    <div id="top" className="relative flex w-full flex-col items-center py-36 md:py-56">
       <AuroraBackdrop variant="hero" />
 
       <div className="flex max-w-[848px] flex-col items-center gap-24 text-center md:gap-32">

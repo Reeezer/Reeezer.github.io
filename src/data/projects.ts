@@ -1,6 +1,6 @@
-import type { Project, ProjectCategory } from './types'
+import type { Project, ProjectFilter } from './types'
 
-export const projectFilters: readonly { id: ProjectCategory | 'all'; label: string }[] = [
+export const projectFilters: readonly { id: ProjectFilter; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'genai', label: 'GenAI' },
   { id: 'ml', label: 'ML' },

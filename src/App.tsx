@@ -33,7 +33,7 @@ export function App() {
         <Contact />
       </main>
 
-      <footer className="w-full max-w-[1424px] py-8">
+      <footer className="w-full py-8">
         <p>
           {profile.name} {new Date().getFullYear()}
         </p>

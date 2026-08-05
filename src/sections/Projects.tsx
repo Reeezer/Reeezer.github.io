@@ -1,20 +1,16 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { EntryCard } from '@/components/EntryCard'
 import { Section } from '@/components/Section'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { projectFilters, projects } from '@/data/projects'
-import type { ProjectCategory } from '@/data/types'
+import type { ProjectFilter } from '@/data/types'
 import { STACK } from '@/sections/layout'
 
-type Filter = ProjectCategory | 'all'
-
 export function Projects() {
-  const [filter, setFilter] = useState<Filter>('all')
+  const [filter, setFilter] = useState<ProjectFilter>('all')
 
-  const visible = useMemo(
-    () => (filter === 'all' ? projects : projects.filter((p) => p.categories.includes(filter))),
-    [filter],
-  )
+  const visible =
+    filter === 'all' ? projects : projects.filter((p) => p.categories.includes(filter))
 
   return (
     <Section id="projects" title="Projects" icon="projects.png">
@@ -23,9 +19,9 @@ export function Projects() {
         value={filter}
         // Radix clears the value when the active item is pressed again; keep
         // the last filter rather than falling through to an empty state.
-        onValueChange={(next) => next && setFilter(next as Filter)}
+        onValueChange={(next) => next && setFilter(next as ProjectFilter)}
         aria-label="Filter projects by category"
-        className="w-full max-w-[1136px] justify-start gap-1 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="w-full justify-start gap-1 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {projectFilters.map((option) => (
           <ToggleGroupItem

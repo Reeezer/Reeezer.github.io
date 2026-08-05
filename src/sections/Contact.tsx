@@ -11,7 +11,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative flex w-full max-w-[1424px] flex-col items-center py-36 text-center md:py-56"
+      className="relative flex w-full flex-col items-center py-36 text-center md:py-56"
     >
       <AuroraBackdrop variant="contact" />
 

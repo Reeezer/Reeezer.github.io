@@ -2,14 +2,16 @@ import type { ReactNode } from 'react'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
+/**
+ * `framed` draws the hairline border that lights up on hover (grid cards).
+ * `plain` is borderless, for the full-width stacked lists.
+ */
+export type CardVariant = 'framed' | 'plain'
+
 interface LinkCardProps {
   /** When set, the whole card becomes a link that opens in a new tab. */
   readonly href?: string
-  /**
-   * `framed` draws the hairline border that lights up on hover (grid cards).
-   * `plain` is borderless, for the full-width stacked lists.
-   */
-  readonly variant?: 'framed' | 'plain'
+  readonly variant?: CardVariant
   readonly children: ReactNode
 }
 

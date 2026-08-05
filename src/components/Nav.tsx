@@ -2,6 +2,9 @@ import { navItems, profile } from '@/data/profile'
 import { useSectionProgress } from '@/hooks/useSectionProgress'
 import { cn } from '@/lib/utils'
 
+// Module-scoped on purpose: this array is the effect dependency inside
+// useSectionProgress, so a per-render copy would re-subscribe the scroll
+// listener on every render.
 const sectionIds = navItems.map((item) => item.id)
 
 export function Nav() {

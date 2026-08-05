@@ -35,6 +35,9 @@ export interface Entry {
 
 export type ProjectCategory = 'genai' | 'ml' | 'robotics' | 'web-soft-games'
 
+/** A projects-section filter tab: one category, or the "All" reset. */
+export type ProjectFilter = ProjectCategory | 'all'
+
 export interface Project extends Entry {
   readonly categories: readonly ProjectCategory[]
 }

@@ -1,12 +1,12 @@
 import { ExternalLink, Trophy } from 'lucide-react'
-import { LinkCard } from '@/components/LinkCard'
+import { LinkCard, type CardVariant } from '@/components/LinkCard'
 import { TagList } from '@/components/TagList'
 import { CardAction, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
 import type { Entry } from '@/data/types'
 
 interface EntryCardProps {
   readonly entry: Entry
-  readonly variant?: 'framed' | 'plain'
+  readonly variant?: CardVariant
 }
 
 /** Renders one Education / Experience / Project / Volunteering record. */
