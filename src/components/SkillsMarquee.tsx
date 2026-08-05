@@ -28,7 +28,7 @@ function MarqueeRow({ row, reversed }: { readonly row: SkillRow; readonly revers
   return (
     <div
       className={cn(
-        'group relative w-full overflow-hidden',
+        'relative w-full overflow-hidden',
         // Fade both edges instead of painting two gradient overlays.
         'fade-x',
         // Without motion the rail becomes a plain horizontal scroller.
@@ -41,8 +41,6 @@ function MarqueeRow({ row, reversed }: { readonly row: SkillRow; readonly revers
           'm-0 flex w-max list-none flex-row gap-[var(--marquee-gap)] p-0',
           'motion-safe:animate-marquee',
           reversed && '[animation-direction:reverse]',
-          // Pausing on hover lets a reader actually stop and look at a chip.
-          'group-hover:[animation-play-state:paused]',
         )}
       >
         {row.skills.map((skill) => (

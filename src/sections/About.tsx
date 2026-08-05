@@ -20,7 +20,7 @@ export function About() {
               </h3>
               <CardAction>
                 <ExternalLink
-                  className="size-5 text-foreground/50 transition-all duration-300 ease-[var(--ease-spring)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
+                  className="size-5 text-foreground/50 transition-colors duration-300 ease-[var(--ease-out-soft)] group-hover:text-foreground"
                   aria-hidden="true"
                 />
               </CardAction>

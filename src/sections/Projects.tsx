@@ -31,7 +31,7 @@ export function Projects() {
           <ToggleGroupItem
             key={option.id}
             value={option.id}
-            className="shrink-0 rounded-lg! border border-transparent px-4 py-2 text-base whitespace-nowrap text-muted-foreground transition-all duration-300 ease-[var(--ease-out-soft)] hover:border-hairline-faint hover:bg-ink-raised hover:text-foreground active:scale-97 active:duration-100 data-[state=on]:border-hairline data-[state=on]:bg-ink-raised data-[state=on]:text-foreground"
+            className="shrink-0 rounded-full! border border-transparent px-4 py-2 text-base whitespace-nowrap text-muted-foreground transition-all duration-300 ease-[var(--ease-out-soft)] hover:border-hairline-faint hover:bg-ink-raised hover:text-foreground active:scale-97 active:duration-100 data-[state=on]:border-hairline data-[state=on]:bg-ink-raised data-[state=on]:text-foreground"
           >
             {option.label}
           </ToggleGroupItem>

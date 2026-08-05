@@ -32,7 +32,10 @@ const DRIFT = [
 /** Decorative blurred blue lights behind the hero and contact panels. */
 export function AuroraBackdrop({ variant }: AuroraBackdropProps) {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    // No overflow clipping: a 200px blur cut to the section bounds reads as a
+    // hard-edged rectangle. The lights bleed past on purpose; body's
+    // overflow-x: hidden stops them creating a horizontal scrollbar.
+    <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
       {LAYOUTS[variant].map((placement, index) => (
         <span
           key={placement}

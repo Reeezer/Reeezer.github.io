@@ -11,14 +11,19 @@ export function Nav() {
     <header
       className={cn(
         'fixed top-3 z-100 flex w-[calc(100vw-1.5rem)] max-w-[1424px] flex-row items-center',
-        'justify-between gap-4 rounded-xl border border-hairline px-3 py-1',
+        // Pill-shaped bar with pill-shaped items: an inner radius of
+        // (outer − padding) nests exactly, which a fixed radius pair does not.
+        'justify-between gap-4 rounded-full border border-hairline p-1.5',
         // Translucent material the page scrolls under; a brighter top edge
         // reads as light catching the surface.
         'material border-t-white/25',
         'md:top-8 md:w-[calc(100vw-4rem)]',
       )}
     >
-      <a href="#top" className="shrink-0 px-4 py-2 font-semibold tracking-tight text-foreground">
+      <a
+        href="#top"
+        className="shrink-0 rounded-full px-4 py-2 font-semibold tracking-tight text-foreground"
+      >
         {profile.handle}
       </a>
 
@@ -36,7 +41,7 @@ export function Nav() {
             href={`#${item.id}`}
             aria-current={activeId === item.id ? 'true' : undefined}
             className={cn(
-              'shrink-0 rounded-lg border border-transparent px-3 py-2 text-base whitespace-nowrap',
+              'shrink-0 rounded-full border border-transparent px-3 py-2 text-base whitespace-nowrap',
               'text-muted-foreground transition-all duration-300 ease-[var(--ease-out-soft)]',
               'hover:border-hairline-faint hover:bg-ink-raised hover:text-foreground',
               // Feedback lands on press, not on release.
