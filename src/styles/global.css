@@ -100,15 +100,16 @@
   }
 
   /*
-   * The marquee rail holds its list twice, so travelling half its width plus
-   * half a gap lands exactly on the duplicate and the loop is invisible.
+   * The rail repeats its list as many times as the track needs; travelling one
+   * set plus one gap (--marquee-distance, measured at runtime) lands the next
+   * copy exactly where the previous one began, so the loop is invisible.
    */
   @keyframes marquee {
     from {
       transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translate3d(calc(-50% - var(--marquee-gap) / 2), 0, 0);
+      transform: translate3d(calc(-1 * var(--marquee-distance, 0px)), 0, 0);
     }
   }
 

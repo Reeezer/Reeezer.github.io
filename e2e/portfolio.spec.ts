@@ -152,15 +152,39 @@ test.describe('portfolio', () => {
     await expect(cards).toHaveCount(total)
   })
 
-  test('skills marquee duplicates its rail and hides the clones', async ({ page }) => {
+  test('every marquee row repeats enough to overrun its track', async ({ page }) => {
     await page.goto('/')
+    await page.locator('#projects').scrollIntoViewIfNeeded()
 
-    const firstRail = page.locator('ul').filter({ hasText: 'PyTorch' }).first()
-    const visibleChips = firstRail.locator('li:not([aria-hidden="true"])')
-    const clonedChips = firstRail.locator('li[aria-hidden="true"]')
+    const rows = await page.evaluate(() =>
+      [...document.querySelectorAll('[style*="--marquee-distance"]')].map((rail) => {
+        const track = rail.parentElement as HTMLElement
+        const sets = [...rail.children] as HTMLElement[]
+        return {
+          first: sets[0]?.textContent?.slice(0, 12) ?? '',
+          railWidth: rail.getBoundingClientRect().width,
+          trackWidth: track.getBoundingClientRect().width,
+          setWidth: sets[0]?.getBoundingClientRect().width ?? 0,
+          sets: sets.length,
+          exposedSets: sets.filter((s) => s.getAttribute('aria-hidden') !== 'true').length,
+        }
+      }),
+    )
 
-    // The seamless -50% loop depends on the list being present exactly twice.
-    await expect(clonedChips).toHaveCount(await visibleChips.count())
+    expect(rows).toHaveLength(5)
+
+    for (const row of rows) {
+      // A hole appears whenever the rail is not at least one full set wider
+      // than the track: the tail runs out before the loop restarts.
+      expect(
+        row.railWidth,
+        `row "${row.first}" leaves a gap: rail ${row.railWidth} < track ${row.trackWidth} + set ${row.setWidth}`,
+      ).toBeGreaterThanOrEqual(row.trackWidth + row.setWidth)
+
+      // Repeats must not be announced twice to assistive tech.
+      expect(row.exposedSets).toBe(1)
+      expect(row.sets).toBeGreaterThanOrEqual(2)
+    }
   })
 
   test('anchor navigation reaches the target section', async ({ page }) => {
@@ -233,9 +257,7 @@ test.describe('motion', () => {
     await page.goto('/')
 
     const state = await page.evaluate(() => {
-      const rail = [...document.querySelectorAll('ul')].find((ul) =>
-        ul.textContent?.includes('PyTorch'),
-      )
+      const rail = document.querySelector('[style*="--marquee-distance"]')
       return {
         scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
         marquee: rail ? getComputedStyle(rail).animationName : null,
