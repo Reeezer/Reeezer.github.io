@@ -12,16 +12,18 @@ npm run dev     # http://localhost:5173
 
 ## Scripts
 
-| Script                 | What it does                                        |
-| ---------------------- | --------------------------------------------------- |
-| `npm run dev`          | Vite dev server with hot reload                     |
-| `npm run build`        | Type-check and build to `dist/`                     |
-| `npm run preview`      | Serve the production build locally                  |
-| `npm run lint`         | TypeScript type-check                               |
-| `npm run lint:eslint`  | ESLint                                              |
-| `npm run format`       | Prettier, write                                     |
-| `npm run format:check` | Prettier, check only                                |
-| `npm run check`        | Everything CI runs: format, lint, type-check, build |
+| Script                 | What it does                                |
+| ---------------------- | ------------------------------------------- |
+| `npm run dev`          | Vite dev server with hot reload             |
+| `npm run build`        | Type-check and build to `dist/`             |
+| `npm run preview`      | Serve the production build locally          |
+| `npm run lint`         | TypeScript type-check                       |
+| `npm run lint:eslint`  | ESLint                                      |
+| `npm run format`       | Prettier, write                             |
+| `npm run format:check` | Prettier, check only                        |
+| `npm run test:e2e`     | Playwright E2E against the production build |
+| `npm run test:e2e:ui`  | Playwright in UI mode                       |
+| `npm run check`        | Everything CI runs, end to end              |
 
 ## Project layout
 
@@ -64,6 +66,18 @@ file hygiene, Prettier, ESLint, type-check) before each commit.
 uv tool install prek      # or: pipx install prek
 prek install              # npm install does this too
 prek run --all-files
+```
+
+## Tests
+
+`e2e/portfolio.spec.ts` runs against the real production bundle — `playwright.config.ts` starts
+`vite preview` first — across a desktop and a mobile viewport. It covers the behaviour that broke
+in the original site: nav scroll-spy, project filtering, asset paths, alt text, external-link
+safety, and reduced-motion suppression.
+
+```bash
+npx playwright install chromium   # once
+npm run test:e2e
 ```
 
 ## Deployment

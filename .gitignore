@@ -6,6 +6,12 @@ dist/
 # TypeScript incremental build state
 *.tsbuildinfo
 
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
 # Editor
 .vscode/*
 !.vscode/extensions.json
