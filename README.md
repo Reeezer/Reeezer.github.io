@@ -34,7 +34,7 @@ src/
   components/        Shared components
     ui/              shadcn/ui primitives (generated; not hand-edited)
   sections/          One component per page section
-  hooks/             useActiveSection (nav scroll-spy)
+  hooks/             useSectionProgress (nav trail)
   styles/global.css  Tailwind entry, design tokens, custom utilities
 ```
 
@@ -72,13 +72,26 @@ prek run --all-files
 
 `e2e/portfolio.spec.ts` runs against the real production bundle — `playwright.config.ts` starts
 `vite preview` first — across a desktop and a mobile viewport. It covers the behaviour that broke
-in the original site: nav scroll-spy, project filtering, asset paths, alt text, external-link
-safety, and reduced-motion suppression.
+in the original site: the progressive nav trail, project filtering, asset paths, alt text,
+external-link safety, and the motion policy below.
 
 ```bash
 npx playwright install chromium   # once
 npm run test:e2e
 ```
+
+## Motion policy
+
+`prefers-reduced-motion` is handled per component rather than with a blanket override, because a
+blanket rule also removes motion that carries meaning:
+
+| Motion                    | Under `prefers-reduced-motion: reduce` |
+| ------------------------- | -------------------------------------- |
+| Drifting backdrop lights  | Off — a large moving background        |
+| Hero scroll-cue bob       | Off                                    |
+| Skills marquee            | On — small chips, slow linear drift    |
+| Smooth scrolling          | On                                     |
+| Hover states, border spin | On — pointer-driven, never ambient     |
 
 ## Deployment
 

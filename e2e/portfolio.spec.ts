@@ -172,18 +172,82 @@ test.describe('portfolio', () => {
   })
 })
 
-test.describe('reduced motion', () => {
-  test('suppresses the marquee animation', async ({ page }) => {
+test.describe('navigation progress', () => {
+  const MUTED = 'rgba(255, 255, 255, 0.6)'
+  const LIT = 'rgb(255, 255, 255)'
+
+  async function linkColours(page: Page) {
+    return page.evaluate(() =>
+      [...document.querySelectorAll('header nav a')].map((a) => getComputedStyle(a).color),
+    )
+  }
+
+  test('starts with every link unlit', async ({ page }) => {
+    await page.goto('/')
+    expect(await linkColours(page)).toEqual(Array(6).fill(MUTED))
+  })
+
+  test('lights links cumulatively and keeps them lit once passed', async ({ page }) => {
+    await page.goto('/')
+
+    // Scrolling is smooth, so the page is still moving right after the call;
+    // poll rather than sampling a single frame mid-animation.
+    await page.locator('#experience').scrollIntoViewIfNeeded()
+    await expect.poll(async () => (await linkColours(page)).slice(0, 3)).toEqual(Array(3).fill(LIT))
+
+    // About, Education and Experience are behind us; the rest are not.
+    expect((await linkColours(page)).slice(3)).toEqual(Array(3).fill(MUTED))
+
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+    await expect
+      .poll(async () => (await linkColours(page)).every((colour) => colour === LIT))
+      .toBe(true)
+
+    // Scrolling back to the top resets the trail.
+    await page.evaluate(() => window.scrollTo(0, 0))
+    await expect
+      .poll(async () => (await linkColours(page)).every((colour) => colour === MUTED))
+      .toBe(true)
+  })
+})
+
+test.describe('motion', () => {
+  test('spins the card border on hover', async ({ page, isMobile }) => {
+    // The gradient frame is a pointer affordance; below md it is turned off
+    // entirely, and touch contexts have no hover state to assert against.
+    test.skip(!!isMobile, 'desktop-only affordance')
+
+    await page.goto('/')
+
+    const card = page.locator('#experience a.group').first()
+    await card.scrollIntoViewIfNeeded()
+    await card.hover()
+
+    await expect
+      .poll(() => card.evaluate((el) => getComputedStyle(el).animationName))
+      .toBe('border-spin')
+  })
+
+  test('keeps smooth scrolling and the marquee under reduced motion', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
 
-    const rail = page.locator('ul').filter({ hasText: 'PyTorch' }).first()
-    const animationName = await rail.evaluate((el) => getComputedStyle(el).animationName)
+    const state = await page.evaluate(() => {
+      const rail = [...document.querySelectorAll('ul')].find((ul) =>
+        ul.textContent?.includes('PyTorch'),
+      )
+      return {
+        scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
+        marquee: rail ? getComputedStyle(rail).animationName : null,
+      }
+    })
 
-    expect(animationName).toBe('none')
+    expect(state).toEqual({ scrollBehavior: 'smooth', marquee: 'marquee' })
   })
 
-  test('suppresses the hero scroll cue and backdrop drift', async ({ page }) => {
+  test('still suppresses the backdrop drift and scroll cue under reduced motion', async ({
+    page,
+  }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
 
@@ -193,6 +257,7 @@ test.describe('reduced motion', () => {
       ),
     )
 
+    expect(names.length).toBeGreaterThan(0)
     expect(names.every((name) => name === 'none')).toBe(true)
   })
 })

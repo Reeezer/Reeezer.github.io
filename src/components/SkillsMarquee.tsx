@@ -31,15 +31,15 @@ function MarqueeRow({ row, reversed }: { readonly row: SkillRow; readonly revers
         'relative w-full overflow-hidden',
         // Fade both edges instead of painting two gradient overlays.
         'fade-x',
-        // Without motion the rail becomes a plain horizontal scroller.
-        'motion-reduce:overflow-x-auto',
       )}
     >
       <ul
         style={style}
         className={cn(
           'm-0 flex w-max list-none flex-row gap-[var(--marquee-gap)] p-0',
-          'motion-safe:animate-marquee',
+          // Always animates: a slow linear drift of small chips is part of the
+          // site's character, not the kind of motion reduced-motion targets.
+          'animate-marquee',
           reversed && '[animation-direction:reverse]',
         )}
       >

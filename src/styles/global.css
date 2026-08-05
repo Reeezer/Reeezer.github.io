@@ -2,6 +2,17 @@
 @import 'tw-animate-css';
 
 /*
+ * A registered custom property is what makes the card's gradient border
+ * rotate: plain custom properties cannot be interpolated, but a typed
+ * <angle> can, so the conic gradient's start angle is animatable.
+ */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/*
  * The portfolio is dark-only, so the shadcn token contract is filled in once
  * with the brand palette rather than split across light/dark blocks.
  */
@@ -80,6 +91,13 @@
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
   --animate-drift: drift 26s cubic-bezier(0.22, 0.61, 0.36, 1) infinite alternate;
   --animate-bob: bob 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+  --animate-border-spin: border-spin 4s linear infinite;
+
+  @keyframes border-spin {
+    to {
+      --border-angle: 360deg;
+    }
+  }
 
   /*
    * The marquee rail holds its list twice, so travelling half its width plus
@@ -122,6 +140,18 @@
     rgba(0, 150, 255, 0.4),
     rgba(0, 230, 255, 0.4),
     rgba(19, 85, 227, 0.4)
+  );
+}
+
+/* Same palette as bg-brand-gradient, but sweeping so it can be rotated. */
+@utility bg-brand-conic {
+  background-image: conic-gradient(
+    from var(--border-angle),
+    rgba(19, 85, 227, 0.5),
+    rgba(0, 150, 255, 0.6),
+    rgba(0, 230, 255, 0.7),
+    rgba(0, 150, 255, 0.6),
+    rgba(19, 85, 227, 0.5)
   );
 }
 
@@ -198,16 +228,9 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+/*
+ * Reduced-motion policy, applied per component rather than with a blanket
+ * override: the large drifting backdrop and the hero's bobbing cue are the
+ * vestibular ones, so those carry `motion-safe:`. Smooth scrolling and the
+ * skills marquee are part of the site's character and always run.
+ */

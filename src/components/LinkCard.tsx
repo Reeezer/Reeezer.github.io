@@ -26,8 +26,9 @@ export function LinkCard({ href, variant = 'framed', children }: LinkCardProps) 
     'group block h-full rounded-[var(--radius)] transition-all duration-300 ease-[var(--ease-out-soft)]',
     framed && [
       'bg-hairline p-px',
-      'hover:bg-brand-gradient hover:shadow-glow hover:-translate-y-0.5',
-      'focus-visible:bg-brand-gradient focus-visible:shadow-glow',
+      // The border is a conic gradient whose start angle spins on hover.
+      'hover:bg-brand-conic hover:animate-border-spin hover:shadow-glow hover:-translate-y-0.5',
+      'focus-visible:bg-brand-conic focus-visible:animate-border-spin focus-visible:shadow-glow',
       'active:translate-y-0 active:scale-[0.995] active:duration-150',
       // Below the card grid the frame would only add visual noise.
       'max-md:bg-transparent max-md:p-0 max-md:hover:translate-y-0 max-md:hover:bg-transparent max-md:hover:shadow-none',
