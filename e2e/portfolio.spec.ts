@@ -9,6 +9,16 @@ const SECTIONS = [
   'contact',
 ] as const
 
+/**
+ * SkillsMarquee's animated rail, findable by the inline custom property the
+ * component sets once a row is measured. Passed into page.evaluate as an
+ * argument because those callbacks are serialized and cannot close over it.
+ */
+const MARQUEE_RAIL = '[style*="--marquee-distance"]'
+
+/** One rail per row in src/data/skills.ts. */
+const MARQUEE_ROW_COUNT = 5
+
 /** Fail the test on any console error or uncaught exception. */
 function trackPageErrors(page: Page): string[] {
   const errors: string[] = []
@@ -156,22 +166,24 @@ test.describe('portfolio', () => {
     await page.goto('/')
     await page.locator('#projects').scrollIntoViewIfNeeded()
 
-    const rows = await page.evaluate(() =>
-      [...document.querySelectorAll('[style*="--marquee-distance"]')].map((rail) => {
-        const track = rail.parentElement as HTMLElement
-        const sets = [...rail.children] as HTMLElement[]
-        return {
-          first: sets[0]?.textContent?.slice(0, 12) ?? '',
-          railWidth: rail.getBoundingClientRect().width,
-          trackWidth: track.getBoundingClientRect().width,
-          setWidth: sets[0]?.getBoundingClientRect().width ?? 0,
-          sets: sets.length,
-          exposedSets: sets.filter((s) => s.getAttribute('aria-hidden') !== 'true').length,
-        }
-      }),
+    const rows = await page.evaluate(
+      (railSelector) =>
+        [...document.querySelectorAll(railSelector)].map((rail) => {
+          const track = rail.parentElement as HTMLElement
+          const sets = [...rail.children] as HTMLElement[]
+          return {
+            first: sets[0]?.textContent?.slice(0, 12) ?? '',
+            railWidth: rail.getBoundingClientRect().width,
+            trackWidth: track.getBoundingClientRect().width,
+            setWidth: sets[0]?.getBoundingClientRect().width ?? 0,
+            sets: sets.length,
+            exposedSets: sets.filter((s) => s.getAttribute('aria-hidden') !== 'true').length,
+          }
+        }),
+      MARQUEE_RAIL,
     )
 
-    expect(rows).toHaveLength(5)
+    expect(rows).toHaveLength(MARQUEE_ROW_COUNT)
 
     for (const row of rows) {
       // A hole appears whenever the rail is not at least one full set wider
@@ -208,7 +220,7 @@ test.describe('navigation progress', () => {
 
   test('starts with every link unlit', async ({ page }) => {
     await page.goto('/')
-    expect(await linkColours(page)).toEqual(Array(6).fill(MUTED))
+    expect(await linkColours(page)).toEqual(Array(SECTIONS.length).fill(MUTED))
   })
 
   test('lights links cumulatively and keeps them lit once passed', async ({ page }) => {
@@ -243,7 +255,9 @@ test.describe('motion', () => {
 
     await page.goto('/')
 
-    const card = page.locator('#experience a.group').first()
+    // Select on the structural card contract, not the `group` styling hook —
+    // data-slot="card" is set by the shadcn primitive and survives restyling.
+    const card = page.locator('#experience a:has([data-slot="card"])').first()
     await card.scrollIntoViewIfNeeded()
     await card.hover()
 
@@ -259,15 +273,17 @@ test.describe('motion', () => {
     // Asserting animationName is not enough: a row with a 0s duration reports
     // the right name and never moves. Measure displacement over real time.
     const positions = () =>
-      page.evaluate(() =>
-        [...document.querySelectorAll('[style*="--marquee-distance"]')].map((rail) => ({
-          x: rail.getBoundingClientRect().x,
-          duration: getComputedStyle(rail).animationDuration,
-        })),
+      page.evaluate(
+        (railSelector) =>
+          [...document.querySelectorAll(railSelector)].map((rail) => ({
+            x: rail.getBoundingClientRect().x,
+            duration: getComputedStyle(rail).animationDuration,
+          })),
+        MARQUEE_RAIL,
       )
 
     const before = await positions()
-    expect(before).toHaveLength(5)
+    expect(before).toHaveLength(MARQUEE_ROW_COUNT)
     for (const row of before) {
       expect(row.duration).not.toBe('0s')
     }
@@ -284,13 +300,13 @@ test.describe('motion', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
 
-    const state = await page.evaluate(() => {
-      const rail = document.querySelector('[style*="--marquee-distance"]')
+    const state = await page.evaluate((railSelector) => {
+      const rail = document.querySelector(railSelector)
       return {
         scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
         marquee: rail ? getComputedStyle(rail).animationName : null,
       }
-    })
+    }, MARQUEE_RAIL)
 
     expect(state).toEqual({ scrollBehavior: 'smooth', marquee: 'marquee' })
   })
