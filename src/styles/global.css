@@ -1,0 +1,213 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/*
+ * The portfolio is dark-only, so the shadcn token contract is filled in once
+ * with the brand palette rather than split across light/dark blocks.
+ */
+:root {
+  --radius: 1rem;
+
+  /* Brand */
+  --brand: rgb(19, 85, 227);
+  --brand-bright: rgb(0, 150, 255);
+  --brand-cyan: rgb(0, 230, 255);
+  --ink: rgb(0, 5, 10);
+  --ink-raised: rgb(10, 15, 20);
+
+  /* shadcn contract */
+  --background: var(--ink);
+  --foreground: rgb(255, 255, 255);
+  --card: var(--ink);
+  --card-foreground: rgb(255, 255, 255);
+  --popover: var(--ink-raised);
+  --popover-foreground: rgb(255, 255, 255);
+  --primary: var(--brand);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: var(--ink-raised);
+  --secondary-foreground: rgb(255, 255, 255);
+  --muted: var(--ink-raised);
+  --muted-foreground: rgba(255, 255, 255, 0.6);
+  --accent: var(--ink-raised);
+  --accent-foreground: rgb(255, 255, 255);
+  --destructive: rgb(220, 60, 60);
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.2);
+  --ring: var(--brand-cyan);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand aliases usable as utilities: text-brand, bg-ink-raised, … */
+  --color-brand: var(--brand);
+  --color-brand-bright: var(--brand-bright);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+
+  --color-hairline: rgba(255, 255, 255, 0.2);
+  --color-hairline-faint: rgba(255, 255, 255, 0.1);
+
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Motion — shared curves so every transition agrees. */
+  --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-drift: drift 26s cubic-bezier(0.22, 0.61, 0.36, 1) infinite alternate;
+  --animate-bob: bob 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+
+  /*
+   * The marquee rail holds its list twice, so travelling half its width plus
+   * half a gap lands exactly on the duplicate and the loop is invisible.
+   */
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(calc(-50% - var(--marquee-gap) / 2), 0, 0);
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(4%, -3%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+}
+
+/* Named gradients and glows reused across sections. */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(
+    135deg,
+    rgba(19, 85, 227, 0.4),
+    rgba(0, 150, 255, 0.4),
+    rgba(0, 230, 255, 0.4),
+    rgba(19, 85, 227, 0.4)
+  );
+}
+
+@utility shadow-glow {
+  box-shadow: 0 0 48px rgba(0, 200, 255, 0.1);
+}
+
+/* Soft-clip a horizontally scrolling strip instead of cutting it dead. */
+@utility fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/*
+ * Translucent chrome that content scrolls under. Collapses to a solid surface
+ * when the reader has asked for less transparency.
+ */
+@utility material {
+  background-color: color-mix(in srgb, var(--ink) 70%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--ink);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchor targets clear of the fixed navigation bar. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-muted-foreground font-sans antialiased;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-optical-sizing: auto;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-foreground;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* shadcn's base only sets an outline colour; give keyboard users a real ring. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  img {
+    @apply block max-w-full;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

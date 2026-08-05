@@ -1,0 +1,50 @@
+# Run with prek (https://github.com/j178/prek) — a drop-in, faster pre-commit.
+#   prek install     # install the git hook
+#   prek run --all-files
+minimum_pre_commit_version: '3.0.0'
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^public/
+      - id: end-of-file-fixer
+        exclude: ^public/
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+        # tsconfig files are JSONC — comments are valid and intentional there.
+        exclude: ^tsconfig.*\.json$
+      - id: check-case-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+        exclude: ^public/
+      - id: check-added-large-files
+        # Project artwork is legitimately ~2 MB; block anything beyond that.
+        args: [--maxkb=2048]
+
+  # Local hooks reuse the project's own node_modules rather than a second
+  # toolchain, so CI and the hook always agree on versions.
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write
+        language: system
+        types_or: [ts, tsx, javascript, jsx, css, json, markdown, yaml]
+        exclude: ^(public/|package-lock\.json$)
+
+      - id: eslint
+        name: eslint
+        entry: npx eslint --fix --max-warnings 0
+        language: system
+        types_or: [ts, tsx]
+        exclude: ^src/components/ui/
+
+      - id: typecheck
+        name: typecheck (tsc)
+        entry: npm run lint
+        language: system
+        types_or: [ts, tsx]
+        pass_filenames: false

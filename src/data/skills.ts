@@ -1,0 +1,76 @@
+import type { SkillRow } from './types'
+
+export const skillRows: readonly SkillRow[] = [
+  {
+    id: 'languages',
+    skills: [
+      { name: 'Python', icon: 'python-original.svg' },
+      { name: 'Java', icon: 'java-original.svg' },
+      { name: 'C', icon: 'c-original.svg' },
+      { name: 'C++', icon: 'cplusplus-original.svg' },
+      { name: 'C#', icon: 'csharp-original.svg' },
+      { name: 'Visual Basic', icon: 'visualbasic-original.svg' },
+      { name: 'Kotlin', icon: 'kotlin-original.svg' },
+      { name: 'Lua', icon: 'lua-original.svg' },
+      { name: 'Scala', icon: 'scala-original.svg' },
+      { name: 'Dart', icon: 'dart-original.svg' },
+    ],
+  },
+  {
+    id: 'ai-data',
+    skills: [
+      { name: 'PyTorch', icon: 'pytorch-original.svg' },
+      { name: 'Scikit-learn', icon: 'scikitlearn-original.svg' },
+      { name: 'Hugging Face', icon: 'hugging-face-icon.svg' },
+      { name: 'Pandas', icon: 'pandas-original.svg' },
+      { name: 'Spark', icon: 'apachespark-original.svg' },
+      { name: 'OpenCV', icon: 'opencv-original.svg' },
+      { name: 'CUDA', icon: 'nvidia.svg' },
+      { name: 'LangGraph', icon: 'langgraph.svg' },
+      { name: 'Chroma', icon: 'chroma.svg' },
+      { name: 'Dataiku', icon: 'dataiku.svg' },
+      { name: 'Amazon Web Services', icon: 'aws.svg' },
+    ],
+  },
+  {
+    id: 'software',
+    skills: [
+      { name: 'Flutter', icon: 'flutter-original.svg' },
+      { name: 'Qt', icon: 'qt-original.svg' },
+      { name: 'Xamarin', icon: 'xamarin-original.svg' },
+      { name: '.NET', icon: 'dot-net-original.svg' },
+      { name: 'Android', icon: 'android-original.svg' },
+      { name: 'Unity', icon: 'unity-original.svg' },
+      { name: 'Gradle', icon: 'gradle-original.svg' },
+    ],
+  },
+  {
+    id: 'web',
+    skills: [
+      { name: 'HTML5', icon: 'html5-original.svg' },
+      { name: 'CSS3', icon: 'css3-original.svg' },
+      { name: 'JavaScript', icon: 'javascript-original.svg' },
+      { name: 'TypeScript', icon: 'typescript-original.svg' },
+      { name: 'VueJS', icon: 'vuejs-original.svg' },
+      { name: 'Django', icon: 'django-icon.svg' },
+      { name: 'Laravel', icon: 'laravel-original.svg' },
+      { name: 'Spring', icon: 'spring-original.svg' },
+      { name: 'PHP', icon: 'php-original.svg' },
+    ],
+  },
+  {
+    id: 'tooling',
+    skills: [
+      { name: 'MySQL', icon: 'mysql-original.svg' },
+      { name: 'PostgreSQL', icon: 'postgresql-original.svg' },
+      { name: 'Postman', icon: 'postman-original.svg' },
+      { name: 'Bash', icon: 'bash-icon.svg' },
+      { name: 'Docker', icon: 'docker-original.svg' },
+      { name: 'Kubernetes', icon: 'kubernetes-original.svg' },
+      { name: 'Git', icon: 'git-original.svg' },
+      { name: 'GitHub', icon: 'github.svg' },
+      { name: 'Figma', icon: 'figma-original.svg' },
+      { name: 'Aseprite', icon: 'aseprite.svg' },
+    ],
+  },
+]
