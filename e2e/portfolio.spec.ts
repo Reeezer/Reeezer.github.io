@@ -252,6 +252,34 @@ test.describe('motion', () => {
       .toBe('border-spin')
   })
 
+  test('every marquee row actually travels', async ({ page }) => {
+    await page.goto('/')
+    await page.locator('#projects').scrollIntoViewIfNeeded()
+
+    // Asserting animationName is not enough: a row with a 0s duration reports
+    // the right name and never moves. Measure displacement over real time.
+    const positions = () =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('[style*="--marquee-distance"]')].map((rail) => ({
+          x: rail.getBoundingClientRect().x,
+          duration: getComputedStyle(rail).animationDuration,
+        })),
+      )
+
+    const before = await positions()
+    expect(before).toHaveLength(5)
+    for (const row of before) {
+      expect(row.duration).not.toBe('0s')
+    }
+
+    await page.waitForTimeout(1200)
+    const after = await positions()
+
+    after.forEach((row, index) => {
+      expect(row.x, `marquee row ${index} did not move`).not.toBe(before[index]?.x)
+    })
+  })
+
   test('keeps smooth scrolling and the marquee under reduced motion', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')

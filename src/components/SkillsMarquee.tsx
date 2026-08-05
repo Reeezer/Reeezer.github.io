@@ -60,10 +60,18 @@ function MarqueeRow({ row, reversed }: { readonly row: SkillRow; readonly revers
     return () => observer.disconnect()
   }, [])
 
-  const style = {
-    '--marquee-distance': `${distance}px`,
-    '--marquee-duration': `${distance / PIXELS_PER_SECOND}s`,
-  } as CSSProperties
+  // Withhold the animation until the row has been measured. Applying it while
+  // distance is still 0 means an infinite animation with a 0s duration, which
+  // browsers treat as already finished — setting a real duration afterwards
+  // does not restart it, so the row would sit still forever.
+  const measured = distance > 0
+
+  const style = measured
+    ? ({
+        '--marquee-distance': `${distance}px`,
+        '--marquee-duration': `${distance / PIXELS_PER_SECOND}s`,
+      } as CSSProperties)
+    : undefined
 
   return (
     <div
@@ -80,7 +88,7 @@ function MarqueeRow({ row, reversed }: { readonly row: SkillRow; readonly revers
           'flex w-max flex-row gap-4',
           // Always animates: a slow linear drift of small chips is part of the
           // site's character, not the kind of motion reduced-motion targets.
-          'animate-marquee',
+          measured && 'animate-marquee',
           reversed && '[animation-direction:reverse]',
         )}
       >
