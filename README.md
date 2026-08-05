@@ -17,10 +17,11 @@ npm run dev     # http://localhost:5173
 | `npm run dev`          | Vite dev server with hot reload             |
 | `npm run build`        | Type-check and build to `dist/`             |
 | `npm run preview`      | Serve the production build locally          |
-| `npm run lint`         | TypeScript type-check                       |
-| `npm run lint:eslint`  | ESLint                                      |
+| `npm run typecheck`    | TypeScript type-check                       |
+| `npm run lint`         | ESLint                                      |
 | `npm run format`       | Prettier, write                             |
 | `npm run format:check` | Prettier, check only                        |
+| `npm run knip`         | Unused files, exports and dependencies      |
 | `npm run test:e2e`     | Playwright E2E against the production build |
 | `npm run test:e2e:ui`  | Playwright in UI mode                       |
 | `npm run check`        | Everything CI runs, end to end              |
@@ -46,8 +47,8 @@ relevant file — no markup changes. The types in `src/data/types.ts` describe e
 `src/styles/global.css` fills in the shadcn token contract (`--background`, `--primary`, `--border`,
 …) with the portfolio's dark/blue palette, so every shadcn component inherits the site's identity
 without per-component overrides. Brand aliases (`text-brand`, `bg-ink-raised`, `border-hairline`)
-and the custom `bg-brand-gradient`, `shadow-glow`, `fade-x` and `material` utilities are defined in
-the same file.
+and the custom `bg-brand-gradient`, `bg-brand-conic`, `shadow-glow`, `fade-x` and `material`
+utilities are defined in the same file.
 
 ## Adding a shadcn component
 
@@ -60,7 +61,9 @@ Components land in `src/components/ui/` and are excluded from ESLint, since they
 ## Code quality
 
 [prek](https://github.com/j178/prek) runs the hooks in `.pre-commit-config.yaml` (whitespace and
-file hygiene, Prettier, ESLint, type-check) before each commit.
+file hygiene, Prettier, ESLint, type-check) before each commit. [knip](https://knip.dev) guards
+against unused files, exports and dependencies; it runs in `npm run check` and CI, configured by
+`knip.jsonc`.
 
 ```bash
 uv tool install prek      # or: pipx install prek
