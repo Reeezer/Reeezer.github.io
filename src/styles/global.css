@@ -1,5 +1,11 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+/*
+ * Only real markup feeds the class scanner. Tailwind's automatic source
+ * detection would read README and test prose too, where any class-like word
+ * ("material", "shadow-glow") emits a phantom utility into the bundle.
+ */
+@import 'tailwindcss' source(none);
+@source '../../index.html';
+@source '../../src';
 
 /*
  * A registered custom property is what makes the card's gradient border
@@ -70,8 +76,6 @@
   /* Brand aliases usable as utilities: text-brand, bg-ink-raised, … */
   --color-brand: var(--brand);
   --color-brand-bright: var(--brand-bright);
-  --color-brand-cyan: var(--brand-cyan);
-  --color-ink: var(--ink);
   --color-ink-raised: var(--ink-raised);
 
   --color-hairline: rgba(255, 255, 255, 0.2);
@@ -228,10 +232,3 @@
     @apply block max-w-full;
   }
 }
-
-/*
- * Reduced-motion policy, applied per component rather than with a blanket
- * override: the large drifting backdrop and the hero's bobbing cue are the
- * vestibular ones, so those carry `motion-safe:`. Smooth scrolling and the
- * skills marquee are part of the site's character and always run.
- */

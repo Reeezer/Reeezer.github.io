@@ -5,10 +5,6 @@ export const profile = {
   handle: '@Reeezer/',
   tagline: 'Machine Learning Engineer from EPFL, passionate about machine learning research.',
   email: 'muller.leonchristian@gmail.com',
-  description:
-    'Portfolio of Léon Muller — Machine Learning Engineer from EPFL, working on AI research, ' +
-    'foundation models and generative AI.',
-  siteUrl: 'https://reeezer.github.io',
 } as const
 
 export const navItems: readonly NavItem[] = [
