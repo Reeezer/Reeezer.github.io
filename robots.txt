@@ -1,0 +1,5 @@
+# robots.txt for https://reeezer.github.io
+User-agent: *
+Allow: /
+
+Sitemap: https://reeezer.github.io/sitemap.xml
